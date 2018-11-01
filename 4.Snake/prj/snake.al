@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
     <Project_Created_Time>2018-05-07 15:24:38</Project_Created_Time>
-    <TD_Version>4.2.511</TD_Version>
-    <UCode>00000000</UCode>
+    <TD_Version>4.2.885</TD_Version>
+    <UCode>11111010</UCode>
     <Name>Snake</Name>
     <HardWare>
         <Family>EG4</Family>
@@ -30,8 +30,8 @@
         <CREATEINDEX>auto</CREATEINDEX>
     </TOP_MODULE>
     <Project_Settings>
-        <Step_Last_Change>2018-10-20 16:09:03</Step_Last_Change>
-        <Current_Step>0</Current_Step>
+        <Step_Last_Change>2018-11-01 14:01:04</Step_Last_Change>
+        <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
 </Project>

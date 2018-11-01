@@ -10,7 +10,6 @@
 		<input_frequency>24.000Mhz</input_frequency>
 		<feedback_mode>Normal</feedback_mode>
 		<clk_num>CLKC0</clk_num>
-		<enable_reset>ENABLE</enable_reset>
 		<pll_lock>ENABLE</pll_lock>
 	</Page1>
 	<Page2>
@@ -18,13 +17,13 @@
 	</Page2>
 	<Page3>
 		<setting>frequncy_setting</setting>
-		<multiplication_factor>18</multiplication_factor>
-		<division_factor>13</division_factor>
+		<multiplication_factor>11</multiplication_factor>
+		<division_factor>9</division_factor>
 		<clocks>
 			<clock>
 				<id>0</id>
-				<clock_division_factor>30</clock_division_factor>
-				<clock_frequency>33.330Mhz</clock_frequency>
+				<clock_division_factor>34</clock_division_factor>
+				<clock_frequency>29.300Mhz</clock_frequency>
 				<phase_shift>0.000deg</phase_shift>
 			</clock>
 		</clocks>

@@ -17,7 +17,6 @@ module top_snake(
 wire clk, clklock;
 ip_pll pll(
 	.refclk		(clk_in),
-	.reset		(~rst),
 	.extlock	(clklock),
 	.clk0_out	(clk)
 );
@@ -41,23 +40,23 @@ lcd_sync lcd(
 
 // snake game logic
 localparam Key_Left=4'h2, Key_Right=4'h4, Key_Down=4'h3, Key_Up=4'h7;
+wire[1:0] frame;
+assign frame[0] = v_cnt==1 && h_cnt==0;
+assign frame[1] = v_cnt==1 && h_cnt==2;
 
-wire frame_v1 = v_cnt==1 && h_cnt==0;
-wire frame_v2 = v_cnt==2 && h_cnt==0;
 wire keydown = 1;
 wire[3:0] code = btn ? (btn1? Key_Left : Key_Down) : Key_Up;
-wire[1:0] vout;
+wire[1:0] pixel;
 wire[11:0] score, hi_score;
 snake game(
-	.clk		(clk), 
-	.rst		(rst), 
+	.clk		(clk),
+	.rst		(rst),
 	.code		(code),
 	.keydown	(keydown),
-	.x			(x),
+	.x			(x+2),
 	.y			(y),
-	.frame_sync0(frame_v1),
-	.frame_sync1(frame_v2),
-	.pixel		(vout),
+	.frame_sync (frame),
+	.pixel		(pixel),
 	.score		(score),
 	.hi_score	(hi_score)
 );
@@ -66,9 +65,10 @@ snake game(
 wire[9:0]	rom_adr;
 wire[31:0]	rom_q;
 chrom number(
-	.wclk		(clk), // input clk
-	.raddr		(rom_adr), // input [9:0] address from 0-703
-	.do			(rom_q) // output [31:0] dout
+	.clka		(clk), // input clk
+	.addra		(rom_adr), // input [9:0] address from 0-703
+	.doa		(rom_q), // output [31:0] dout
+	.rsta		(~rst)
 );
 
 // score text, use font 0-9
@@ -89,28 +89,22 @@ block text_score(
 	.do			(text_q)
 );
 
-/*
-// display ':'
-wire[3:0] char=10; //':'
-wire[9:0] pox=628;
-text text(clk, rst, rom_adr, rom_q, poxx, posy, x, y, char, text_q);
-*/
-
 // display, pixel rgb color
 localparam None = 2'd0, Body=2'd1, Brick=2'd2, Apple=2'd3;
 
 localparam	None_Color = {8'hFF, 8'hFF, 8'hFF},
 			Body_Color = {8'h08, 8'hFF, 8'h00},
+			Brick_Color ={8'h00, 8'h00, 8'hFF},	
 			Apple_Color ={8'hFF, 8'h00, 8'h00},	
 			Score_Color ={8'h08, 8'h08, 8'hFF}, 
 			HiSco_Color ={8'hFF, 8'h88, 8'h00};
 // every tile size is 32 pixel 
 always @(negedge clk)
 	if(LCD_DEN) begin
-		case(vout[1:0]) // type
+		case(pixel) // type
 			None:	{R,G,B} <= None_Color ;
 			Body:	{R,G,B} <= Body_Color ;
-//			Brick:	{R,G,B} <= Brick_Color;
+			Brick:	{R,G,B} <= Brick_Color;
 			Apple:	{R,G,B} <= Apple_Color;
 		endcase
 		if(text_q>0){R,G,B} <= x<660 ? HiSco_Color : Score_Color;
