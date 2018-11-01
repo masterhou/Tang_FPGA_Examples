@@ -80,19 +80,19 @@ end
 always @(posedge clk)
 	case(number)
 		0:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'ha,4'h0};
-		2:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'ha,4'h2};
-		4:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'ha,4'h4};
-		8:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'ha,4'h8};
-		16:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'h1,4'h6};
-		32:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'h3,4'h2};
-		64:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'h6,4'h4};
-		128:	{char[0],char[1],char[2],char[3]}<={4'ha,4'h1,4'h2,4'h8};
-		256:	{char[0],char[1],char[2],char[3]}<={4'ha,4'h2,4'h5,4'h6};
-		512:	{char[0],char[1],char[2],char[3]}<={4'ha,4'h5,4'h1,4'h2};
-		1024:	{char[0],char[1],char[2],char[3]}<={4'h1,4'h0,4'h2,4'h4};
-		2048:	{char[0],char[1],char[2],char[3]}<={4'h2,4'h0,4'h4,4'h8};
-		4096:	{char[0],char[1],char[2],char[3]}<={4'h4,4'h0,4'h9,4'h6};
-		8192:	{char[0],char[1],char[2],char[3]}<={4'h8,4'h1,4'h9,4'h2};
+		1:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'ha,4'h2};
+		2:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'ha,4'h4};
+		3:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'ha,4'h8};
+		4:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'h1,4'h6};
+		5:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'h3,4'h2};
+		6:		{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'h6,4'h4};
+		7:		{char[0],char[1],char[2],char[3]}<={4'ha,4'h1,4'h2,4'h8};
+		8:		{char[0],char[1],char[2],char[3]}<={4'ha,4'h2,4'h5,4'h6};
+		9:		{char[0],char[1],char[2],char[3]}<={4'ha,4'h5,4'h1,4'h2};
+		10:		{char[0],char[1],char[2],char[3]}<={4'h1,4'h0,4'h2,4'h4};
+		11:		{char[0],char[1],char[2],char[3]}<={4'h2,4'h0,4'h4,4'h8};
+		12:		{char[0],char[1],char[2],char[3]}<={4'h4,4'h0,4'h9,4'h6};
+		13:		{char[0],char[1],char[2],char[3]}<={4'h8,4'h1,4'h9,4'h2};
 		default:{char[0],char[1],char[2],char[3]}<={4'ha,4'ha,4'ha,4'ha};
 	endcase
 

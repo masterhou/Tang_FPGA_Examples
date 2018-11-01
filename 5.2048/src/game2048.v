@@ -18,7 +18,7 @@ module game2048(
 localparam Key_Left=4'h1, Key_Right=4'h3, Key_Up=4'h6, Key_Down=4'h2;
 localparam game_init=1, game_rand=2, game_keywait=3, game_keyup=4, game_cal=5, game_move=6, game_over=3'd7;
 
-reg[13:0] grid[15:0];
+reg[3:0] grid[15:0];
 reg[15:0]  score;
 
 ///////////////////////////////////
@@ -53,9 +53,9 @@ lcd_sync lcd(
 
 reg keydown;
 wire[3:0] code = Key_Down;
-always @(posedge LCD_DEN)
-	if(LCD_DEN)
-		keydown <= btn==0;
+always @(negedge clk)
+	if(!LCD_VSYNC)
+		keydown <= ~btn;
 ///////////////////////////////////
 
 wire[7:0] randq;
@@ -111,14 +111,14 @@ always @(posedge clk or negedge rst)
 		end
 		else begin 
 			score <= 16'd0;
-			grid[5] <= 4'd2;
+			grid[randq[4:1]] <= 4'd1;
 			grid_cnt <= 4'd0;
 			game_state <= game_rand;
 		end
 	end
 	else if(game_state == game_rand) begin
 		if(grid[randq[3:0]]==0) begin
-			grid[randq[3:0]] <= 4'd2;
+			grid[randq[3:0]] <= 4'd1;
 			game_state <= game_keywait;
 		end
 	end
@@ -143,7 +143,7 @@ always @(posedge clk or negedge rst)
 		if(g<4) begin
 			if(f<3) begin
 				if(grid[o1]==grid[o2] & grid[o1]!=0) begin
-					grid[o1] <= grid[o1]+grid[o1];
+					grid[o1] <= grid[o1]+1'b1;
 					grid[o2] <= 1'b0;
 					score <= score + grid[o1]+grid[o1];
 					q <= 1'b1;
@@ -206,9 +206,10 @@ always @(posedge clk or negedge rst)
 wire[9:0]	rom_address;
 wire[31:0] rom_q;
 chrom u_chrom(
-  .wclk(clk), // input clk
-  .raddr(rom_address), // input [9:0] address from 0-703
-  .do(rom_q) // output [31:0] dout
+  .clka(clk), // input clk
+  .addra(rom_address), // input [9:0] address from 0-703
+  .doa(rom_q), // output [31:0] dout
+  .rsta(~rst)
   );
 
 wire data;

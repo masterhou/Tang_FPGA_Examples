@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
     <Project_Created_Time>2018-10-15 12:36:57</Project_Created_Time>
-    <TD_Version>4.2.511</TD_Version>
-    <UCode>00000000</UCode>
+    <TD_Version>4.2.885</TD_Version>
+    <UCode>01000010</UCode>
     <Name>Game2048</Name>
     <HardWare>
         <Family>EG4</Family>
@@ -28,8 +28,8 @@
         <CREATEINDEX>auto</CREATEINDEX>
     </TOP_MODULE>
     <Project_Settings>
-        <Step_Last_Change>2018-10-29 12:15:54</Step_Last_Change>
-        <Current_Step>0</Current_Step>
+        <Step_Last_Change>2018-11-01 14:48:27</Step_Last_Change>
+        <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
 </Project>

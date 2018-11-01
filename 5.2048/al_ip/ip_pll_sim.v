@@ -1,8 +1,8 @@
-// Verilog netlist created by TD v4.2.217
-// Thu Aug  9 17:48:06 2018
+// Verilog netlist created by TD v4.2.885
+// Wed Oct 31 15:57:16 2018
 
 `timescale 1ns / 1ps
-module ip_pll  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(22)
+module ip_pll  // C:/Users/Thomas/Documents/Tang_FPGA_Examples/5.2048/al_ip/ip_pll.v(22)
   (
   refclk,
   reset,
@@ -10,16 +10,16 @@ module ip_pll  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(2
   extlock
   );
 
-  input refclk;  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(27)
-  input reset;  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(28)
-  output clk0_out;  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(30)
-  output extlock;  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(29)
+  input refclk;  // C:/Users/Thomas/Documents/Tang_FPGA_Examples/5.2048/al_ip/ip_pll.v(27)
+  input reset;  // C:/Users/Thomas/Documents/Tang_FPGA_Examples/5.2048/al_ip/ip_pll.v(28)
+  output clk0_out;  // C:/Users/Thomas/Documents/Tang_FPGA_Examples/5.2048/al_ip/ip_pll.v(30)
+  output extlock;  // C:/Users/Thomas/Documents/Tang_FPGA_Examples/5.2048/al_ip/ip_pll.v(29)
 
-  wire clk0_buf;  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(32)
+  wire clk0_buf;  // C:/Users/Thomas/Documents/Tang_FPGA_Examples/5.2048/al_ip/ip_pll.v(32)
 
   EG_PHY_GCLK bufg_feedback (
     .clki(clk0_buf),
-    .clko(clk0_out));  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(34)
+    .clko(clk0_out));  // C:/Users/Thomas/Documents/Tang_FPGA_Examples/5.2048/al_ip/ip_pll.v(34)
   EG_PHY_CONFIG #(
     .DONE_PERSISTN("ENABLE"),
     .INIT_PERSISTN("ENABLE"),
@@ -27,8 +27,8 @@ module ip_pll  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(2
     .PROGRAMN_PERSISTN("DISABLE"))
     config_inst ();
   EG_PHY_PLL #(
-    .CLKC0_CPHASE(30),
-    .CLKC0_DIV(30),
+    .CLKC0_CPHASE(34),
+    .CLKC0_DIV(34),
     .CLKC0_DIV2_ENABLE("DISABLE"),
     .CLKC0_ENABLE("ENABLE"),
     .CLKC0_FPHASE(0),
@@ -55,7 +55,7 @@ module ip_pll  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(2
     .DERIVE_PLL_CLOCKS("DISABLE"),
     .DPHASE_SOURCE("DISABLE"),
     .DYNCFG("DISABLE"),
-    .FBCLK_DIV(18),
+    .FBCLK_DIV(11),
     .FEEDBK_MODE("NORMAL"),
     .FEEDBK_PATH("CLKC0_EXT"),
     .FIN("24.000"),
@@ -85,7 +85,7 @@ module ip_pll  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(2
     .PREDIV_MUXC2("VCO"),
     .PREDIV_MUXC3("VCO"),
     .PREDIV_MUXC4("VCO"),
-    .REFCLK_DIV(13),
+    .REFCLK_DIV(9),
     .REFCLK_SEL("INTERNAL"),
     .STDBY_ENABLE("DISABLE"),
     .STDBY_VCO_ENA("DISABLE"),
@@ -106,7 +106,7 @@ module ip_pll  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(2
     .reset(reset),
     .stdby(1'b0),
     .clkc({open_n47,open_n48,open_n49,open_n50,clk0_buf}),
-    .extlock(extlock));  // H:/Work/FPGA/AnLogic/LicheeTang/demo/test_lcd/al_ip/ip_pll.v(73)
+    .extlock(extlock));  // C:/Users/Thomas/Documents/Tang_FPGA_Examples/5.2048/al_ip/ip_pll.v(57)
 
 endmodule 
 
